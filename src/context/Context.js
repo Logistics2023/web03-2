@@ -17,7 +17,7 @@ export function UserProvider({ children }) {
 	const [calcValue, setCalcValue] = useState('NO DATA')
 	const [naviera, setNaviera] = useState('')
     const [option, setOption] = useState('Seccion')
-
+    const [languaje, setLanguaje] = useState('Español')
 	const [focus, setFocus] = useState('')
 	const [select, setSelect] = useState('')
 	const [seeMore, setSeeMore] = useState('')
@@ -136,6 +136,7 @@ export function UserProvider({ children }) {
 			trackingDB, setTrackingDB,
 			track, setTrack,
 			option, setOption,
+			languaje, setLanguaje,
 			setUserPdfData,
 			setUserProfile,
 			setUserData,
@@ -146,7 +147,7 @@ export function UserProvider({ children }) {
 			setUserSuccess,
 			setUserItem
 		})
-	}, [user, userDB, distributorPDB, focus, productDB,trackingDB, track,element,option, calcValue,calcValueFCL,naviera,pedidos, item, cart, success, qr, QRurl, recetaDB, cliente, filter, filterQR, recetaDBP, select, nav, temporal, userUuid, modal, msg, tienda, introVideo, play, sound, navItem, webScann, seeMore,])
+	}, [user, userDB, distributorPDB, focus, languaje, productDB,trackingDB, track,element,option, calcValue,calcValueFCL,naviera,pedidos, item, cart, success, qr, QRurl, recetaDB, cliente, filter, filterQR, recetaDBP, select, nav, temporal, userUuid, modal, msg, tienda, introVideo, play, sound, navItem, webScann, seeMore,])
 
 	return (
 		<UserContext.Provider value={value} >

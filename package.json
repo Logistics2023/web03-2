@@ -24,12 +24,14 @@
     "react-animated-slider": "^2.0.0",
     "react-awesome-slider": "^4.1.0",
     "react-dom": "^18",
+    "react-google-recaptcha": "^3.1.0",
     "react-html-parser": "^2.0.2",
     "react-multi-carousel": "^2.8.5",
     "react-quill": "^2.0.0",
     "react-slick": "^0.30.2",
     "react-type-animation": "^3.2.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "translate": "^3.0.0"
   },
   "devDependencies": {
     "postcss": "^8",

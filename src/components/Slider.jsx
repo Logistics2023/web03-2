@@ -13,7 +13,7 @@ function Responsive({ content }) {
 		speed: 4000,
 		autoplaySpeed: 4000,
 		cssEase: "linear",
-		pauseOnHover: false,
+		pauseOnHover: true,
 		arrows: false,
 
 	};

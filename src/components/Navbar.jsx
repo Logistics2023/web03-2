@@ -6,15 +6,14 @@ import Link from 'next/link'
 import { handleSignOut } from '@/firebase/utils'
 import Modal from '@/components/Modal'
 import { glosario } from '@/db'
-
+import SelectSimple from '@/components/SelectSimple'
 
 
 export default function BottomNavigation({ rol }) {
-    const { user, userDB, modal, setModal, setUserProfile, setUserData, setUserProduct, setRecetaDB, setUserCart, setUserDistributorPDB, filter, setFilter, nav, setNav, navItem, setNavItem, setSeeMore } = useUser()
+    const { user, userDB, modal, setModal, setUserProfile, languaje, setLanguaje, setUserData, setUserProduct, setRecetaDB, setUserCart, setUserDistributorPDB, filter, setFilter, nav, setNav, navItem, setNavItem, setSeeMore } = useUser()
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [scrollY, setScrollY] = useState(0)
-    // const [filter, setFilter] = useState('')
     const router = useRouter()
     const pathname = usePathname()
     function openNav(e) {
@@ -50,6 +49,21 @@ export default function BottomNavigation({ rol }) {
     }
 
 
+    let arr = {
+        "translations": {
+            "spa": {
+                "official": "Estado Plurinacional de Bolivia",
+                "common": "Bolivia"
+            },
+        },
+        "flags": {
+            "png": "https://flagcdn.com/w320/bo.png",
+        }
+    }
+    function handlerClickSelect(name, i, uuid) {
+        setLanguaje(i)
+      }
+    
     // console.log()
 
 
@@ -200,7 +214,7 @@ export default function BottomNavigation({ rol }) {
                             }
                         </li>
                         {pathname === '/' && <li>
-                            <button className='flex items-center text-white h-[35px]  bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-800      rounded-[5px] border    text-center mr-5 p-2 px-5' onClick={() => window.open('https://sistemas.logisticsgear.net')}>
+                            <button className='flex items-center text-white h-[35px]  bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-800      rounded-[5px] border    text-center  p-2 px-5' onClick={() => window.open('https://sistemas.logisticsgear.net')}>
                                 <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10 10C11.1046 10 12 9.10457 12 8C12 6.89543 11.1046 6 10 6C8.89543 6 8 6.89543 8 8C8 9.10457 8.89543 10 10 10Z" stroke="white" stroke-width="1.5" />
                                     <path d="M14 14C14 15.105 14 16 10 16C6 16 6 15.105 6 14C6 12.895 7.79 12 10 12C12.21 12 14 12.895 14 14Z" stroke="white" stroke-width="1.5" />
@@ -211,6 +225,11 @@ export default function BottomNavigation({ rol }) {
                                 </span>
                             </button>
                         </li>}
+                        <div className='relative w-[100px]'>
+
+                            {pathname === '/' && <SelectSimple arr={['Español', 'English']} bg='bg-[#F7BE38] text-black border-white' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje} />}
+
+                        </div>
 
                     </ul>
                 </div>
@@ -230,7 +249,7 @@ export default function BottomNavigation({ rol }) {
                         </svg>
                     </button>
                 </div>
-            </div>    
+            </div>
 
             {/*-------------------------------------------- MOBILE--------------------------- */}
             <div className='pt-5'>

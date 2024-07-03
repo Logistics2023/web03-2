@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useUser } from '@/context/Context'
 
 
-export default function Select({ arr, name, click, defaultValue, uuid, label, required }) {
+export default function Select({ arr, name, click, defaultValue, uuid, label, position, bg, required }) {
 
     const router = useRouter()
     const { select, setSelect } = useUser()
@@ -26,16 +26,16 @@ export default function Select({ arr, name, click, defaultValue, uuid, label, re
     return (
         <div className='relative'>
             <div id={label}
-                className={`relative block border border-[#a1a1a1]  pt-2.5 mb-0 pb-0  w-full text-[12px] text-gray-900 bg-transparent px-5    focus:outline-none focus:ring-0  peer rounded-[5px]`}
+                className={`relative  border border-[#a1a1a1]  pt-2.5 mb-0   w-full text-[12px]   px-5 ${bg ? `${bg} pb-2` : 'bg-transparent text-gray-900 border-[#a1a1a1]'}   focus:outline-none focus:ring-0  peer rounded-[5px]`}
                 onClick={handlerSelect}>
-                  {defaultValue === 'Seleccionar'&&  <span className='absolute'>Seleccionar</span> }
-                <input type="text" disabled className='  w-full h-full border-transparent outline-none focus:outline-none' value={defaultValue !== 'Seleccionar' ? defaultValue : ''} required />
-                <span className={select === name ? 'absolute right-5 rotate-[270deg]' : 'absolute right-5 rotate-90'}>{'>'}</span>
-
+                    {defaultValue === 'Seleccionar' && <span className='absolute'>Seleccionar</span>}
+                    <input type="text" disabled className='relative  w-full h-full border-transparent outline-none focus:outline-none bg-transparent' value={defaultValue !== 'Seleccionar' ? defaultValue : ''} required />
+                    <span className={select === name ? 'absolute right-5 rotate-[270deg]' : 'absolute right-5 rotate-90'}>{'>'}</span>
+    
                 <ul
-                    className={`relative overflow-auto mt-3  transition-all rounded-[5px] bg-[#ffffff00] w-full  ${select === name ? `relative ${arr.length >= 2 && 'h-[95px] border-t  z-10'} ${arr.length == 2 && 'h-[72px] border-t  z-10'} ${arr.length == 1 && 'h-[36px] border-t  z-10'}  ` : 'h-[0]'}`} style={{ background: '#ffffff00' }} >
+                    className={` ${position ? position : 'relative'}  ${bg ? 'bg-gray-100' : 'bg-transparent'} mt-3  transition-all rounded-[5px]  w-full  ${select === name ? ` ${arr.length >= 2 && 'h-[65px] border-t z-10  overflow-auto '} ${arr.length == 2 && 'h-[20px] border-t overflow-hidden  z-10'} ${arr.length == 1 && 'h-[36px] border-t overflow-hidden  z-10'}  ` : 'h-[0] overflow-hidden'}`}  >
                     {
-                        arr.map((i, index) => <li key={index} className='flex items-center  border-t cursor-pointer p-2' onClick={() => handlerUserState(name, i)}> {i} </li>)
+                        arr.map((i, index) => <li key={index} className='flex items-center  border-b cursor-pointer p-2' onClick={() => handlerUserState(name, i)}> {i} </li>)
                     }
                 </ul>
             </div>

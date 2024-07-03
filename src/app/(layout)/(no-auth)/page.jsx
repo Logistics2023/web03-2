@@ -31,6 +31,7 @@ import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.core.css';
 import dynamic from 'next/dynamic'
 import { equipoDB, mercanciaDB, tipoDeUnidadDB } from '@/db/arrDB'
+import translate from "translate";
 
 const InvoicePDF = dynamic(() => import("@/components/CotizacionPDF"), {
   ssr: false,
@@ -222,7 +223,7 @@ export default function Home() {
   }
   // console.log(inputRef.current.value)
   // console.log(inputRef2.current.value)
-  // console.log(selectValue)
+  console.log(cliente.inicio.content)
 
   function preValidate() {
     if (inputRef.current && inputRef2.current && selectValue.MERCANCIA && selectValue['PESO (KG)'] && selectValue.SERVICIO && selectValue['TIPO DE UNIDAD'] && selectValue['VOLUMEN M3']) {
@@ -538,30 +539,44 @@ export default function Home() {
       {cliente['proyecto'] && <Section subtitle={cliente['proyecto'].titulo} description={cliente['proyecto'].content} video={cliente['proyecto'].url} degrade='#00000067' tarjetas={cliente['proyecto'].tarjetas} miniTarjetas={cliente['proyecto'].miniTarjetas} id={'proyecto'}></Section>}
       {cliente['exportaciones'] && <Section subtitle={cliente['exportaciones'].titulo} description={cliente['exportaciones'].content} video={cliente['exportaciones'].url} degrade='#00000067' tarjetas={cliente['exportaciones'].tarjetas} miniTarjetas={cliente['exportaciones'].miniTarjetas} id={'exportaciones'}></Section>}
       {cliente['farmaceutico'] && <Section subtitle={cliente['farmaceutico'].titulo} description={cliente['farmaceutico'].content} video={cliente['farmaceutico'].url} degrade='#00000067' tarjetas={cliente['farmaceutico'].tarjetas} miniTarjetas={cliente['farmaceutico'].miniTarjetas} id={'farmaceutico'}></Section>}
-      {cliente['experiencia'] && <Section subtitle={cliente['experiencia'].titulo} description={cliente['experiencia'].content} video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'}></Section>}
       {cliente['solucionesIT'] && <Section subtitle={cliente['solucionesIT'].titulo} description={cliente['solucionesIT'].content} video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}></Section>}
-      {cliente.Slider1 && <div className='relative bg-gradient-to-tr from-[#274492] via-[#274492] to-[#2d56c9]'>
+      {cliente['experiencia'] && <Section subtitle={cliente['experiencia'].titulo} description={cliente['experiencia'].content} video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'}></Section>}
 
-        <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Testimonios</h1>
-
-        <SliderTestimonios content={Object.values(cliente.Testimonios)} />
+      <div className='relative  bg-gradient-to-tr from-[#00195c] via-[#364e96] to-[#00195c]'>
 
 
-        <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Nuestros Clientes</h1>
-        <Slider content={Object.values(cliente.Slider1)} />
-      </div>}
-      {cliente.Slider2 && <div className='relative  bg-gradient-to-t from-[#00195c] via-[#274492] to-[#00195c]'>
-        <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Socios  Comerciales</h1>
-        <Slider content={Object.values(cliente.Slider2)} />
-      </div>}
-      {cliente.Slider3 && <div className='relative bg-gradient-to-t from-[#00195c] via-[#274492] to-[#00195c]'>
-        <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Empresas</h1>
-        <Slider content={Object.values(cliente.Slider3)} />
-      </div>}
+
+        {cliente.Slider1 && <div className='relative'>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Testimonios</h1>
+          <SliderTestimonios content={Object.values(cliente.Testimonios)} />
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Nuestros Clientes</h1>
+          <Slider content={Object.values(cliente.Slider1)} />
+        </div>}
+
+        {cliente.Slider2 && <div className='relative'>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Socios  Comerciales</h1>
+          <Slider content={Object.values(cliente.Slider2)} />
+        </div>}
+
+        {cliente.Slider3 && <div className='relative'>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Empresas</h1>
+          <Slider content={Object.values(cliente.Slider3)} />
+        </div>}
+
+        <div className='w-full flex flex-col justify-center items-center relative '>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Postula y trabaja  con nosotros</h1>
+          <Button theme='Primary' click={()=>router.push('/Postulaciones')}>Postular</Button>
+        </div>
+
+
+
+
+      </div>
+
       <Footer></Footer>
 
 
-     
+
 
     </main>
 

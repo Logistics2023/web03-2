@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Responsive({ content }) {
     var settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         slidesToShow: 1,
         // slidesToScroll: 1,
@@ -21,7 +21,7 @@ function Responsive({ content }) {
         <div className="slider-container">
             <Slider {...settings} autoplay={true}>
                 {content.map((i, index) => (
-                    <div className='text-center p-[100px]'>
+                    <div className='text-center p-[100px] lg:p-[200px]'>
                         <p className='italic text-white' dangerouslySetInnerHTML={{ __html: i.paragraph }}></p>
                         <br />
                         <h4 className='font-bold italic text-white'>{i.title}</h4>

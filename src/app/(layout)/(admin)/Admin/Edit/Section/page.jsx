@@ -10,6 +10,7 @@ import MiniTarjetasEdit from '@/components/MiniTarjetasEdit'
 import TarjetasEdit from '@/components/TarjetasEdit'
 import TarjetasEdit2 from '@/components/TarjetasEdit2'
 import TarjetasEdit3 from '@/components/TarjetasEdit3'
+import TarjetasEdit4 from '@/components/TarjetasEdit4'
 import SliderEdit from '@/components/SliderEdit'
 import Contactos from '@/components/Contactos'
 
@@ -109,14 +110,21 @@ export default function Home() {
                     <div className="absolute w-[50px] top-5 right-5 text-white p-1 rounded-tl-lg rounded-br-lg text-center bg-red-600" onClick={close}>
                         X
                     </div>
-                    {query !== 'contactos' && query !== 'experiencia' && <>
+                    {query !== 'contactos' && query !== 'experiencia' && query !== 'solucionesIT' &&<>
                         <NavSection />
                         {option === 'Seccion' && <SectionEdit />}
                         {option === 'MiniTarjetas' && <MiniTarjetasEdit />}
                         {option === 'Tarjetas' && <TarjetasEdit />}
                     </>}
+                    {query !== 'contactos' && query !== 'experiencia'&& query === 'solucionesIT' && <>
+                        <NavSection />
+                        {option === 'Seccion' && <SectionEdit />}
+                        {option === 'MiniTarjetas' && <MiniTarjetasEdit />}
+                        {option === 'Tarjetas' && <TarjetasEdit4 />
+                        }
 
-                    {query === 'experiencia' && <>
+                    </>}
+                    {query === 'experiencia' && query !== 'solucionesIT' && <>
                         <NavSection2 />
                         {option === 'Seccion' && <SectionEdit />}
                         {option === 'MiniTarjetas' && <MiniTarjetasEdit />}

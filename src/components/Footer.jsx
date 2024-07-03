@@ -7,7 +7,7 @@ export default function Home() {
   return (
 
     <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-50" id="Contactos">
-      <div className=' bg-gradient-to-tr from-[#00195c] via-[#274492] to-[#00195c]'>
+      <div className=' bg-gradient-to-tr from-[#00195c] via-[#00195c] to-[#00195c]'>
 
 
         <div className="p-4 ">
